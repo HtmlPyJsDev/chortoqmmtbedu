@@ -2,8 +2,6 @@
 
 
 
-
-
 type Post = { id: number; category: string; title: string; text: string; image: string; date: string };
 
 const SECTIONS = [
