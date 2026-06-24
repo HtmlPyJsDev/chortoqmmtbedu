@@ -55,14 +55,14 @@ export default function Home() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const doLogin = (e: React.FormEvent) => {
+  const doLogin = (e: FormEvent) => {
     e.preventDefault();
     if (login.user === ADMIN.user && login.pass === ADMIN.pass) {
       setIsAdmin(true);
       localStorage.setItem("chortoq_admin", "1");
       notify("Xush kelibsiz, administrator!", "success");
     } else {
-      notify("Login yoki parol noto\u0027g\u0027ri!", "error");
+      notify("Login yoki parol noto'g'ri!", "error");
     }
   };
 
@@ -72,7 +72,7 @@ export default function Home() {
     notify("Tizimdan chiqdingiz", "info");
   };
 
-  const addPost = (e: React.FormEvent) => {
+  const addPost = (e: FormEvent) => {
     e.preventDefault();
     if (!form.title.trim()) return notify("Sarlavha kiriting!", "error");
     const post: Post = {
@@ -85,12 +85,12 @@ export default function Home() {
     };
     save([post, ...posts]);
     setForm({ category: "yangiliklar", title: "", text: "", image: "" });
-    notify("Yangilik qo\u0027shildi!", "success");
+    notify("Yangilik qo'shildi!", "success");
   };
 
   const del = (id: number) => {
     save(posts.filter((p) => p.id !== id));
-    notify("O\u0027chirildi", "info");
+    notify("O'chirildi", "info");
   };
 
   const labelOf = (id: string) => SECTIONS.find((s) => s.id === id)?.label || id;
@@ -107,7 +107,7 @@ export default function Home() {
   const Card = (p: Post) => (
     <div className="news-card" key={p.id}>
       {isAdmin && (
-        <button className="delete-btn" onClick={() => del(p.id)} title="O\u0027chirish">\u2715</button>
+        <button className="delete-btn" onClick={() => del(p.id)} title="O'chirish">✕</button>
       )}
       <img className="news-img" src={p.image} alt={p.title} />
       <div className="news-title">{p.title}</div>
@@ -133,7 +133,7 @@ export default function Home() {
           <div className="logo-title">CHORTOQ MMTB</div>
         </div>
         <div className="search-container">
-          <span className="search-icon">\u2315</span>
+          <span className="search-icon">🔍</span>
           <input id="searchInput" placeholder="Qidirish..." value={search} onChange={(e) => setSearch(e.target.value)} />
         </div>
         <button className="menu-toggle menu-btn" id="menuBtn" onClick={() => setMenuOpen((o) => !o)}>
@@ -159,7 +159,7 @@ export default function Home() {
             {isAdmin && (
               <form className="auth-form" onSubmit={addPost} style={{ margin: "0 0 28px" }}>
                 <div className="form-group">
-                  <label>Bo\u0027lim</label>
+                  <label>Bo'lim</label>
                   <select value={form.category} onChange={(e) => setForm({ ...form, category: e.target.value })}>
                     {SECTIONS.filter((x) => x.id !== "bosh-sahifa").map((x) => (
                       <option key={x.id} value={x.id}>{x.label}</option>
@@ -172,12 +172,12 @@ export default function Home() {
                   <textarea value={form.text} onChange={(e) => setForm({ ...form, text: e.target.value })} /></div>
                 <div className="form-group"><label>Rasm URL (ixtiyoriy)</label>
                   <input value={form.image} onChange={(e) => setForm({ ...form, image: e.target.value })} /></div>
-                <button className="btn btn-success" type="submit">Qo\u0027shish</button>
+                <button className="btn btn-success" type="submit">Qo'shish</button>
               </form>
             )}
             <div className="news-grid">
               {visible(s.id).length === 0
-                ? <p style={{ color: "#eaf1fb" }}>Hozircha ma\u0027lumot yo\u0027q.</p>
+                ? <p style={{ color: "#eaf1fb" }}>Hozircha ma'lumot yo'q.</p>
                 : visible(s.id).map((p) => Card(p))}
             </div>
           </section>
@@ -201,8 +201,8 @@ export default function Home() {
       </main>
 
       <footer>
-        <p>\u00A9 {new Date().getFullYear()} Chortoq tumani MMTB. Barcha huquqlar himoyalangan.</p>
-        <p><a href="#">chortoq@umkt.uz</a> \u00B7 +998 (00) 000-00-00</p>
+        <p>© {new Date().getFullYear()} Chortoq tumani MMTB. Barcha huquqlar himoyalangan.</p>
+        <p><a href="#">chortoq@umkt.uz</a> · +998 (00) 000-00-00</p>
       </footer>
 
       {toast && <div id="customToast" className={"show toast-" + toast.type}>{toast.msg}</div>}
