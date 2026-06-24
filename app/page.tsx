@@ -1,6 +1,6 @@
 "use client";
 
-
+import { useEffect, useState, type FormEvent } from "react";
 
 type Post = { id: number; category: string; title: string; text: string; image: string; date: string };
 
