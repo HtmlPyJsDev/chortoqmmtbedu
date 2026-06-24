@@ -24,10 +24,10 @@ body{
 .slide{position:absolute;inset:0;background-size:cover;background-position:center;
   opacity:0;transform:scale(1.08);transition:opacity 1.6s ease,transform 8s linear;animation:none}
 .slide.active{opacity:1;transform:scale(1)}
-.slide-1{background-image:url('1.jpg')}
-.slide-2{background-image:url('2.jpg')}
-.slide-3{background-image:url('3.jpg')}
-.slide-4{background-image:url('4.jpg')}
+.slide-1{background-image:url('https://picsum.photos/seed/chortoq1/1600/900')}
+.slide-2{background-image:url('https://picsum.photos/seed/chortoq2/1600/900')}
+.slide-3{background-image:url('https://picsum.photos/seed/chortoq3/1600/900')}
+.slide-4{background-image:url('https://picsum.photos/seed/chortoq4/1600/900')}
 
 /* ===== HEADER ===== */
 header{
